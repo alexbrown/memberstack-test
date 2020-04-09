@@ -2,11 +2,21 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/classes">Classes</router-link> 
+      <a v-if="$store.getters.isLoggedIn"> | Hi, {{$store.getters.name}} </a>
+      <a ms-logout="true"> | Logout</a>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$store.dispatch("populateUser");
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
